@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi coche</title>
+    <style type="text/css">
+        * {
+            margin: 0px auto;
+            padding: 0px;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font: bold 1.5em arial;
+            text-align: center;
+            padding: 0.5em;
+            color: #333;
+        }
+
+        #visor {
+            position: absolute;
+            top: 100px;
+            left: 200px;
+            width: 450px;
+            height: 300px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #fondoUno {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        #fondoDos {
+            position: absolute;
+            top: 0px;
+            left: 450px;
+        }
+
+        #miCoche {
+            position: absolute;
+            top: 200px;
+            left: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mi coche</h1>
+    <div id="visor">
+        <div id="fondoUno">
+            <img src="imgcoche/fondoCoche.gif" alt="fondo1">
+        </div>
+        <div id="fondoDos">
+            <img src="imgcoche/fondoCoche.gif" alt="fondo2">
+        </div>
+        <div id="miCoche">
+            <img src="imgcoche/coche.gif" alt="elCoche">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function () {//al cargarse la pagina
+            fondo1 = document.getElementById("fondoUno")//referencia al primer fondo
+            fondo2 = document.getElementById("fondoDos")//referencia al segundo fondo
+            paraMover = setInterval(mover, 50)//iniciar primer temporizador : movimiento
+            setInterval(repetir, 2250)//iniciar segundo temporizador : repeticion del ciclo
+        }
+        desplazar = 0 //estado inicial del movimiento
+        function mover() {//temporizador 1: movimiento
+            desplazar -= 10 //desplazar fondo1 -10px
+            desplazar2 = desplazar + 450 //desplazar fondo2 a la vez
+            posicion1 = desplazar + "px" //preparar para codigo CSS fondo1
+            posicion2 = desplazar2 + "px" //preparar para codigo CSS fondo2
+            fondo1.style.left = posicion1 //cambiar posicion fondo1 mediante CSS
+            fondo2.style.left = posicion2 //cambiar posicion fondo2
+        }
+        function repetir() {//temporizador 2: repetir el ciclo
+            fondo1.style.left = "0px" //posicion inicial de fondo1
+            fondo2.style.left = "450px" //posicion inicial de fondo2
+            desplazar = 0 //posicion inicial referencia al movimiento           
+        }
+
+    </script>
+</body>
+
+</html>

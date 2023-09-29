@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+    <style type="text/css">
+        * {
+            margin: auto;
+            padding: 0;
+            text-align: center;
+        }
+        body{
+            background-color: wheat;
+        }
+
+        header {
+            font: bold 200% verdana;
+            background-color: #feffe4;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 0.5em;
+        }
+
+        nav {
+            background-color: #e3f2ff;
+            float: left;
+            width: 25%;
+
+        }
+
+        nav>img {
+            width: 35%;
+            margin: 5%;
+            cursor: pointer;
+        }
+
+        #principal {
+            float: left;
+            width: 75%;
+        }
+
+        #visor {
+            width: 60%;
+            margin: 10%;
+        }
+
+        #visor img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Visor de Imagenes</h1>
+    </header>
+    <nav><img src='imgvisor/foto1.jpg' alt='1. India - Agra - Taj Mahal.' name='fotos1' onclick="mifoto(1)"/>
+        <img src='imgvisor/foto2.jpg' alt='2. Albania - Region de Ballsh.' name='fotos2' onclick="mifoto(2)"/>
+        <img src='imgvisor/foto3.jpg' alt='3. Atenas - Partenón.' name='fotos3' onclick="mifoto(3)"/>
+        <img src='imgvisor/foto4.jpg' alt='4. Bélgica - Amberes.' name='fotos4' onclick="mifoto(4)"/>
+        <img src='imgvisor/foto5.jpg' alt='5. Costa Rica - Parque nacional de la Amistad.' name='fotos5' onclick="mifoto(5)"/>
+        <img src='imgvisor/foto6.jpg' alt='6. Egipto - Templo de Abu Simbel.' name='fotos6' onclick="mifoto(6)"/>
+        <img src='imgvisor/foto7.jpg' alt='7. España - Albacete Ciudad.' name='fotos7' onclick="mifoto(7)"/>
+        <img src='imgvisor/foto8.jpg' alt='8. España - Tarragona - Acueducto romano.' name='fotos8' onclick="mifoto(8)"/>
+    </nav>
+
+    <div id="principal">
+        <div id="visor">
+            <img src='imgvisor/foto1.jpg' alt='1. India - Agra - Taj Mahal.' name='fotoVisor'>
+            <div id="titulo">1. India - Agra - Taj Mahal.</div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function () {//tras cargar la pagina ...
+            visor1 = document.getElementById("visor")//Referencia al visor
+            miTitulo = document.getElementById("titulo")//Referencia al pie de foto
+        }
+        function mifoto(num) {//cambiar la imagen
+            f ="imgvisor/foto"+num+".jpg"//ruta de la nueva imagen
+            document.images["fotoVisor"].src=f//cambiar imagen
+            t = document.images["fotos"+num].alt//texto de pie de foto
+            miTitulo.innerHTML = t //cambiar pie de foto
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+    <style type="text/css">
+        * {
+            font-family: sans-serif;
+        }
+
+        body {
+            background-color: rgb(189, 134, 134);
+        }
+
+        .header {
+            background-color: rgb(248, 77, 77);
+            text-align: center;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .nav {
+            color: white;
+        }
+
+        .Container {
+            padding: 10%;
+            background-color: bisque;
+            border-radius: 10px;
+            box-shadow: 10px 10px rgb(248, 77, 77);
+        }
+
+        .Container>input {
+            box-sizing: border-box;
+        }
+
+        .Container>button {
+            background-color: rgba(157, 229, 234, 0.664);
+            border-color: bisque;
+            border-radius: 10px;
+            padding: 8px;
+        }
+
+        .Container>button:hover {
+            background-color: rgb(112, 225, 112);
+
+        }
+
+        .principal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="principal">
+        <header class="header">
+            <nav class="nav">
+                <h1>Averiguar fecha de primer y último dia del año y mes dado</h1>
+            </nav>
+        </header>
+        <div class="Container">
+            <p>Ingrese la fecha: <input type="text" name="" placeholder="mm/dd/yyyy" id="txtFecha"></p>
+            <button onclick="SaberFecha()">Generar</button>
+            <p>Primer dia de la fecha: <input readonly type="text" name="" id="inpFecha1" style="width: 70%;"></p>
+            <p>Último dia de la fecha: <input readonly type="text" name="" id="inpFecha2" style="width: 70%;"></p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function SaberFecha() {
+            var date = document.getElementById("txtFecha").value
+            var d = new Date(date)
+            var aux = new Date(date)
+            d.setDate(aux.getDate() - (aux.getDate() - 1))
+            document.getElementById("inpFecha1").value = d
+            for (var i = 31; i > 27; i--) {
+                d.setDate(i);
+                if (d.getMonth() > aux.getMonth()) {
+                    d = new Date(date)
+                }
+                else {
+                    document.getElementById("inpFecha2").value = d
+                    break
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

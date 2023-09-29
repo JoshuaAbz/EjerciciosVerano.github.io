@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: sans-serif;
+        }
+
+        body {
+            margin: 0 auto;
+            background-color: #f4f4f4;
+            background-image: url(imgpokemon/pokemonfondo.svg);
+            background-size: cover;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        .campo {
+            margin: 0 auto;
+            width: 900px;
+            height: 500px;
+            background-image: url('imgpokemon/campo.jpg');
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .principal {
+            width: auto;
+            height: 170px;
+            position: sticky;
+            top: 45%;
+            left: 11%;
+        }
+
+        .contrincante {
+            width: auto;
+            height: 170px;
+            position: sticky;
+            top: 35%;
+            left: 80%;
+        }
+
+        .comandos {
+            padding-top: 50px;
+            padding-bottom: 80px;
+            width: 20%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .header {
+            font-size: 130%;
+            width: 106%;
+            background-color: rgb(251, 174, 8);
+            text-align: center;
+            padding: 1px;
+            border-radius: 20px;
+        }
+
+        .nav {
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            font-size: 150%;
+            padding-top: 10px;
+            padding-left: 20px;
+            padding-bottom: 10px;
+            width: 100%;
+            background-color: bisque;
+            border-radius: 10px;
+            box-shadow: 10px 10px rgb(251, 174, 8);
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            font-size: 20px;
+        }
+
+        .container>button {
+            background-color: rgba(157, 229, 234, 0.664);
+            border-color: bisque;
+            border-radius: 10px;
+            padding: 8px;
+            font-size: 20px;
+        }
+
+        .container>button:hover {
+            background-color: rgb(112, 225, 112);
+        }
+
+        .campo>h1 {
+            color: red;
+            width: auto;
+            font-size: 250%;
+            position: sticky;
+            text-align: center;
+            top: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <header style="padding-top: 20px;">
+        <nav class="navbar" style="padding-bottom: 10px;">
+            <div>
+                <img src="imgpokemon/pokeball.png" alt="" height="100">
+            </div>
+            <div>
+                <img src="imgpokemon/Pokemon.png" alt="" height="100">
+            </div>
+            <div>
+                <img src="imgpokemon/pokeball.png" alt="" height="100">
+            </div>
+        </nav>
+        <nav class="navbar" style="padding-top: 30px;">
+            <div>
+                <h1 style="font-size: 30px; color: white;">Elige a tu pokemon:</h1><br><br>
+                <img src="imgpokemon/bulbasaur.png" alt="" height="130" style="padding: 0px; cursor: pointer;"
+                    onclick="pokemon('bulbasaur', 1, 'Hierba')">
+                <img src="imgpokemon/charmander.png" alt="" height="130" style="padding-left: 30px; cursor: pointer;"
+                    onclick="pokemon('charmander', 1, 'Fuego')">
+                <img src="imgpokemon/pikachu.png" alt="" height="130" style="padding-left: 30px; cursor: pointer;"
+                    onclick="pokemon('pikachu', 1, 'Electricidad')">
+                <img src="imgpokemon/squirtle.png" alt="" height="130" style="padding-left: 30px; cursor: pointer;"
+                    onclick="pokemon('squirtle', 1, 'Agua')">
+            </div>
+            <div>
+                <h1 style="font-size: 30px; color: white; text-align: right; padding-right: 10px;">Elige al pokemon
+                    contrincante:</h1><br><br>
+                <img src="imgpokemon/squirtle.png" alt="" height="130" style="padding-right: 30px; cursor: pointer;"
+                    onclick="pokemon('squirtle', 0, 'Agua')">
+                <img src="imgpokemon/pikachu.png" alt="" height="130" style="padding-right: 30px; cursor: pointer;"
+                    onclick="pokemon('pikachu', 0, 'Electricidad')">
+                <img src="imgpokemon/charmander.png" alt="" height="130" style="padding-right: 30px; cursor: pointer;"
+                    onclick="pokemon('charmander', 0, 'Fuego')">
+                <img src="imgpokemon/bulbasaur.png" alt="" height="130" style="padding-right: 0px; cursor: pointer;"
+                    onclick="pokemon('bulbasaur', 0, 'Hierba')">
+            </div>
+        </nav>
+    </header>
+
+    <div class="comandos">
+        <header class="header">
+            <nav class="nav">
+                <h1>Comandos</h1>
+            </nav>
+        </header>
+        <div class="container">
+            <p>Ingresa el ataque: <br><input type="number" name="" placeholder="ATK" id="txtAtk"></p><br>
+            <p>Ingresa la defensa: <br><input type="number" name="" placeholder="DEF" id="txtDef"></p><br>
+            <button
+                onclick="CalcularDaño(document.getElementById('principal').alt,document.getElementById('contrincante').alt,document.getElementById('txtAtk').value, document.getElementById('txtDef').value)">Atacar!</button>
+        </div>
+    </div>
+    <div class="campo" style="border-radius: 50px;">
+        <img id="principal" class="principal" src="" alt="vacio" height="170" name="principal">
+        <img id="contrincante" class="contrincante" src="" alt="vacio" height="170" name="contrincante">
+        <h1 id="txtResultado"></h1>
+    </div>
+
+    <script type="text/javascript">
+        var types = ["Electricidad", "Agua", "Fuego", "Hierba"]
+        function CalcularDaño(type1, type2, attack, defense) {
+            if (type1 != "vacio" && type2 != "vacio" && attack != "" && defense != "") {
+                var efficacy = 0.5
+                if (type1 != type2) {
+                    if (type1 == "Fuego" && type2 == "Hierba") efficacy = 2
+                    if (type1 == "Agua" && type2 == "Fuego") efficacy = 2
+                    if (type1 == "Hierba" && type2 == "Agua") efficacy = 2
+                    if (type1 == "Electricidad" && type2 == "Hierba") efficacy = 2
+                    if (type1 == "Fuego" && type2 == "Electricidad" || type2 == "Fuego" && type1 == "Electrico") efficacy = 1
+                    if (type1 == "Fuego" && type2 == "Hierba" || type2 == "Fuego" && type1 == "Hierba") efficacy = 1
+
+                    document.getElementById("txtResultado").innerText = "¡Daño: " + (Math.ceil(50 * (attack / defense) * efficacy) + "!")
+                }
+                else {
+                    alert("Nose puede luchar con dos pokemones del mismo tipo")
+                }
+            }
+            else {
+                alert("Debe elegir a los pokemons y definir los comandos");
+            }
+        }
+
+        function pokemon(pokemon, num, tipo) {
+            document.getElementById("txtResultado").innerText = ""
+
+            if (num == 1) {
+                f = "imgpokemon/" + pokemon + "pelea.png"
+                document.images["principal"].src = f
+                document.getElementById('principal').alt = tipo
+            }
+            else {
+                f = "imgpokemon/" + pokemon + "pelea.png"
+                document.images["contrincante"].src = f
+                document.getElementById('contrincante').alt = tipo
+            }
+        }
+
+    </script>
+</body>
+
+</html>
